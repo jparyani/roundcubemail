@@ -38,9 +38,13 @@ ADD php.sh /etc/service/php/run
 # setup nginx
 ADD nginx.conf /etc/nginx/nginx.conf
 RUN echo "cgi.fix_pathinfo = 0;" >> /etc/php5/fpm/php.ini
+RUN sed -i 's_^listen\s*=\s*.*_listen = 127.0.0.1:9000_g' /etc/php5/fpm/pool.d/www.conf
+RUN sed -i 's_^user\s*=\s*.*_user = 1000_g' /etc/php5/fpm/pool.d/www.conf
+RUN sed -i 's_^group\s*=\s*.*_group = 1000_g' /etc/php5/fpm/pool.d/www.conf
 
 # Setup dovecot
 RUN mkdir -p /var/db /var/mail/cur /var/mail/new /var/mail/tmp /var/log/roundcube /var/tmp
+RUN chmod 777 /var/db
 RUN echo 'passdb {\n\
   driver = passwd-file\n\
   args = scheme=plain username_format=%n /etc/imap.passwd\n\
