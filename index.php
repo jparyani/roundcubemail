@@ -236,7 +236,7 @@ if (empty($RCMAIL->user->ID)) {
 }
 else {
     // CSRF prevention
-    $RCMAIL->request_security_check();
+    // $RCMAIL->request_security_check();
 
     // check access to disabled actions
     $disabled_actions = (array) $RCMAIL->config->get('disabled_actions');
