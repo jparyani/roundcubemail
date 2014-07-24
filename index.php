@@ -241,10 +241,6 @@ else {
     if (!$request_check_whitelist[$RCMAIL->action]) {
         // check client X-header to verify request origin
         if ($OUTPUT->ajax_call) {
-            if (rcube_utils::request_header('X-Roundcube-Request') != $RCMAIL->get_request_token()) {
-                header('HTTP/1.1 403 Forbidden');
-                die("Invalid Request");
-            }
         }
         // check request token in POST form submissions
         else if (!empty($_POST) && !$RCMAIL->check_request()) {
