@@ -10,6 +10,7 @@ bin/mkdir
 bin/mknod
 bin/rm
 bin/sh
+bin/sleep
 bin/touch
 etc/container_environment
 etc/container_environment/HOSTNAME
