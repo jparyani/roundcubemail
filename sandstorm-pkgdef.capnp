@@ -41,8 +41,7 @@ const pkgdef :Spk.PackageDefinition = (
     # automatically by running it on a FUSE filesystem. So, the mappings
     # here are only to tell it where to find files that the app wants.
     searchPath = [
-      ( sourcePath = "./dockerenv" ),
-      ( sourcePath = "." )  # Search this directory first.
+      ( sourcePath = "./dockerenv" )
     ]
   ),
 

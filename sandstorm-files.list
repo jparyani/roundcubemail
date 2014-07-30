@@ -71,8 +71,6 @@ etc/php5/mods-available/sqlite3.ini
 etc/rc.local
 etc/resolv.conf
 etc/service
-etc/service/cron
-etc/service/cron/run
 etc/service/dovecot
 etc/service/dovecot/run
 etc/service/nginx
@@ -154,6 +152,7 @@ opt/app/plugins/autologon/autologon.php
 opt/app/plugins/filesystem_attachments/filesystem_attachments.php
 opt/app/plugins/jqueryui/jqueryui.php
 opt/app/plugins/jqueryui/js/jquery-ui-1.9.2.custom.min.js
+opt/app/plugins/jqueryui/themes/larry/images/ui-bg_highlight-hard_75_eaeaea_1x100.png
 opt/app/plugins/jqueryui/themes/larry/images/ui-bg_highlight-soft_75_fafafa_1x100.png
 opt/app/plugins/jqueryui/themes/larry/images/ui-bg_highlight-soft_90_e4e4e4_1x100.png
 opt/app/plugins/jqueryui/themes/larry/images/ui-dialog-close.png
@@ -232,7 +231,7 @@ opt/app/program/steps/settings/func.inc
 opt/app/program/steps/settings/identities.inc
 opt/app/program/steps/settings/save_identity.inc
 opt/app/run_grain.sh
-opt/app/sandstorm-smtp-bridge/bin/test-smtp
+opt/app/sandstorm-smtp-bridge/bin/sandstorm-smtp-bridge
 opt/app/skins/larry/addressbook.css
 opt/app/skins/larry/googiespell.css
 opt/app/skins/larry/images/ajaxloader_dark.gif
@@ -279,6 +278,8 @@ usr/bin/python3
 usr/bin/python3.4
 usr/bin/runsv
 usr/bin/runsvdir
+usr/bin/sandstorm-getPublicAddress
+usr/bin/sandstorm-getUserAddress
 usr/bin/touch
 usr/lib/dovecot/anvil
 usr/lib/dovecot/auth
@@ -659,7 +660,6 @@ var_original/lib/dovecot
 var_original/lib/dovecot/instances
 var_original/lib/dovecot/mounts
 var_original/lib/dovecot/ssl-parameters.dat
-var_original/lib/dovecot/ssl-parameters.dat.tmp
 var_original/lib/git
 var_original/lib/initramfs-tools
 var_original/lib/initscripts
@@ -784,14 +784,12 @@ var_original/log/upstart
 var_original/log/wtmp
 var_original/run
 var_original/run/apache2
-var_original/run/crond.pid
 var_original/run/dovecot
 var_original/run/dovecot/anvil
 var_original/run/dovecot/anvil-auth-penalty
 var_original/run/dovecot/auth-client
 var_original/run/dovecot/auth-login
 var_original/run/dovecot/auth-master
-var_original/run/dovecot/auth-token-secret.dat
 var_original/run/dovecot/auth-userdb
 var_original/run/dovecot/auth-worker
 var_original/run/dovecot/config
