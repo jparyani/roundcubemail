@@ -24,6 +24,13 @@ RUN apt-get -y install php5-fpm nginx
 # Install dovecot
 RUN apt-get -y install dovecot-imapd
 
+# Install sandstorm-smtp-bridge
+RUN apt-get -y install clang-3.4
+RUN apt-get -y install git autotools-dev automake autoconf libtool
+RUN apt-get -y install build-essential
+RUN apt-get -y install subversion
+RUN cd /tmp && git clone https://github.com/kentonv/capnproto.git && cd capnproto/c++ && ./setup-autotools.sh && autoreconf -i && ./configure && make clean && make -j6 check && make install
+RUN apt-get -y install libgpgme11-dev libgmime-2.6-dev libselinux1-dev
 RUN apt-get -y install telnet
 
 RUN mkdir /etc/service/dovecot
@@ -34,6 +41,9 @@ ADD nginx.sh /etc/service/nginx/run
 
 RUN mkdir /etc/service/php
 ADD php.sh /etc/service/php/run
+
+RUN mkdir /etc/service/sandstorm-smtp-bridge
+ADD sandstorm-smtp-bridge.sh /etc/service/sandstorm-smtp-bridge/run
 
 # setup nginx
 ADD nginx.conf /etc/nginx/nginx.conf
@@ -73,6 +83,9 @@ RUN chmod -R 777 /var/mail
 
 ADD . /opt/app
 RUN rm -rf /opt/app/.git
+# run `cp -r /opt/sandstorm/latest/usr/include/sandstorm sandstorm` manually
+ADD sandstorm /opt/sandstorm/latest/usr/include/sandstorm
+RUN cd /opt/app/sandstorm-smtp-bridge && make
 
 EXPOSE 33411
 
