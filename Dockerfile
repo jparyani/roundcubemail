@@ -9,6 +9,8 @@ ENV HOME /root
 
 # Disable SSH
 RUN rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
+# Disable cron
+RUN rm -rf /etc/service/cron
 
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
@@ -25,13 +27,10 @@ RUN apt-get -y install php5-fpm nginx
 RUN apt-get -y install dovecot-imapd
 
 # Install sandstorm-smtp-bridge
-RUN apt-get -y install clang-3.4
-RUN apt-get -y install git autotools-dev automake autoconf libtool
 RUN apt-get -y install build-essential
-RUN apt-get -y install subversion
-RUN cd /tmp && git clone https://github.com/kentonv/capnproto.git && cd capnproto/c++ && ./setup-autotools.sh && autoreconf -i && ./configure && make clean && make -j6 check && make install
+RUN apt-get -y install git subversion autotools-dev automake autoconf libtool clang-3.4
+RUN cd /tmp && git clone https://github.com/kentonv/capnproto.git && cd capnproto/c++ && ./setup-autotools.sh && autoreconf -i && ./configure && make clean && make -j2 check && make install
 RUN apt-get -y install libgpgme11-dev libgmime-2.6-dev libselinux1-dev
-RUN apt-get -y install telnet
 
 RUN mkdir /etc/service/dovecot
 ADD dovecot.sh /etc/service/dovecot/run
