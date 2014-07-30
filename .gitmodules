@@ -1,0 +1,3 @@
+[submodule "sandstorm-smtp-bridge"]
+	path = sandstorm-smtp-bridge
+	url = git@github.com:jparyani/sandstorm-smtp-bridge.git
