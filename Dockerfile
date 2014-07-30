@@ -82,9 +82,10 @@ RUN chmod -R 777 /var/mail
 
 ADD . /opt/app
 RUN rm -rf /opt/app/.git
-# run `cp -r /opt/sandstorm/latest/usr/include/sandstorm sandstorm` manually
-ADD sandstorm /opt/sandstorm/latest/usr/include/sandstorm
+# run `cp -r /opt/sandstorm/latest/usr/include/sandstorm sandstorm-headers` manually
+ADD sandstorm-headers /opt/sandstorm/latest/usr/include/sandstorm
 RUN cd /opt/app/sandstorm-smtp-bridge && make
+RUN cd /opt/app/sandstorm && make && cp bin/* /usr/bin
 
 EXPOSE 33411
 
