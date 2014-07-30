@@ -1,4 +1,5 @@
 #!/bin/bash
 
 sleep 2
-nginx
+nginx 2>&1
+
