@@ -6,4 +6,4 @@ do
 done
 
 echo 'starting sandstorm-smtp-bridge'
-/opt/app/sandstorm-smtp-bridge/bin/test-smtp 2>&1
+/opt/app/sandstorm-smtp-bridge/bin/sandstorm-smtp-bridge 2>&1
