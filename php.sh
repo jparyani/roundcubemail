@@ -1,3 +1,3 @@
 #!/bin/sh
 
-php5-fpm -F
+php5-fpm -F 2>&1
