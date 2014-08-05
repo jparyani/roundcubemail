@@ -119,22 +119,26 @@ if ($RCMAIL->task == 'login' && $RCMAIL->action == 'login') {
         $RCMAIL->log_login();
 
         $idents = $RCMAIL->user->list_identities();
-        $count = sizeof($idents);
+        $count = 1;
+        $total = sizeof($idents);
 
+        $userAddress = trim(shell_exec('sandstorm-getUserAddress'));
+        if ($userAddress !== '') {
+            $arr = array(
+                name => rcube_utils::request_header('x-sandstorm-username'),
+                email => $userAddress
+            );
+            $RCMAIL->user->update_identity($count, $arr);
+            $count++;
+        }
         $arr = array(
             name => rcube_utils::request_header('x-sandstorm-username'),
-            email => shell_exec('sandstorm-getPublicAddress')
+            email => trim(shell_exec('sandstorm-getPublicAddress'))
         );
-        $RCMAIL->user->update_identity(1, $arr);
-
-        $arr = array(
-            name => rcube_utils::request_header('x-sandstorm-username'),
-            email => shell_exec('sandstorm-getUserAddress')
-        );
-        if ($count == 1) {
+        if ($total === 1 && $count === 2) {
             $RCMAIL->user->insert_identity($arr);
         } else {
-            $RCMAIL->user->update_identity(2, $arr);
+            $RCMAIL->user->update_identity($count, $arr);
         }
 
         // restore original request parameters
