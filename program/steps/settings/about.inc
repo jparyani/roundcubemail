@@ -25,6 +25,7 @@ $OUTPUT->set_pagetitle($RCMAIL->gettext('about'));
 
 $OUTPUT->add_handler('supportlink', 'rcmail_supportlink');
 $OUTPUT->add_handler('pluginlist', 'rcmail_plugins_list');
+$OUTPUT->add_handler('sandstormblock', 'rcmail_sandstormblock');
 
 $OUTPUT->send('about');
 
@@ -100,4 +101,17 @@ function rcmail_plugins_list($attrib)
     }
 
     return $table->show();
+}
+
+function rcmail_sandstormblock($attrib)
+{
+    global $RCMAIL;
+
+    $publicAddress = shell_exec('sandstorm-getPublicAddress');
+    $userAddress = shell_exec('sandstorm-getUserAddress');
+
+    if (empty(trim($userAddress))) {
+        $userAddress = $publicAddress;
+    }
+    return html::p($attrib, "This grain's email address is " . $publicAddress . ", and all email sent to that address will appear here. If you want to continue using your current email, then you should <a href=\"https://support.google.com/mail/answer/10957?hl=en\">set up forwarding</a>. Emails sent from this grain will appear to be from " . $userAddress . " by default.");
 }
