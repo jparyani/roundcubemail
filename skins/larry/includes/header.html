@@ -12,7 +12,6 @@
 	<roundcube:container name="topline-right" id="topline-right" />
 	<roundcube:if condition="!env:extwin &amp;&amp; !env:framed" />
 		<span class="username"><roundcube:object name="username" /></span>
-		<roundcube:button command="logout" label="logout" class="button-logout" />
 	<roundcube:elseif condition="env:extwin" />
 		<roundcube:button name="close" type="link" label="close" class="closelink" onclick="self.close()" />
 	<roundcube:endif />
@@ -26,7 +25,6 @@
 	<roundcube:button command="addressbook" label="addressbook" class="button-addressbook" classSel="button-addressbook button-selected" innerClass="button-inner" />
 	<roundcube:container name="taskbar" id="taskbar" />
 	<roundcube:button command="settings" label="settings" class="button-settings" classSel="button-settings button-selected" innerClass="button-inner" />
-	<roundcube:button command="logout" label="logout" class="button-logout" classSel="button-logout" innerClass="button-inner" />
 	<span class="minmodetoggle"></span>
 	</div>
 	<roundcube:object name="logo" src="/images/roundcube_logo.png" id="toplogo" alt="Logo" onclick="if(window.rcmail)rcmail.command('switch-task','mail')" />
