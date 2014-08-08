@@ -755,6 +755,14 @@ a.iconlink.upload {
 	background-position: -2px -1829px;
 }
 
+#taskbar .about-link {
+	font-size: 110%;
+}
+
+.ui-dialog-title > .tooltip {
+	visibility: hidden;
+}
+
 
 /*** minimal version of the page header ***/
 

@@ -390,7 +390,7 @@ $labels['done'] = 'Done';
 
 // settings
 $labels['settingsfor'] = 'Settings for';
-$labels['about'] = 'How to use Sandstorm email';
+$labels['about'] = 'Connect to Your Address';
 $labels['preferences'] = 'Preferences';
 $labels['userpreferences'] = 'User preferences';
 $labels['editpreferences'] = 'Edit user preferences';

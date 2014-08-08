@@ -2,7 +2,6 @@
 <div id="topline">
 	<div class="topleft">
 		<roundcube:container name="topline-left" id="topline-left" />
-		<roundcube:button name="about" type="link" label="about" class="about-link" onclick="UI.show_about(this);return false" condition="!env:extwin" />
 		<roundcube:if condition="config:support_url" />
 		<a href="<roundcube:var name='config:support_url' />" target="_blank" class="support-link" id="supportlink"><roundcube:label name="support" /></a>
 		<roundcube:endif />
@@ -21,6 +20,7 @@
 <roundcube:if condition="!env:extwin &amp;&amp; !env:framed" />
 <div id="topnav">
 	<div id="taskbar" class="topright">
+	<roundcube:button name="about" type="link" label="about" class="about-link" onclick="UI.show_about(this);return false" condition="!env:extwin" />
 	<roundcube:button command="mail" label="mail" class="button-mail" classSel="button-mail button-selected" innerClass="button-inner" />
 	<roundcube:button command="addressbook" label="addressbook" class="button-addressbook" classSel="button-addressbook button-selected" innerClass="button-inner" />
 	<roundcube:container name="taskbar" id="taskbar" />
