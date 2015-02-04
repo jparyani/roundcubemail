@@ -2,7 +2,7 @@
 # sure you lock down to a specific version, not to `latest`!
 # See https://github.com/phusion/baseimage-docker/blob/master/Changelog.md for
 # a list of version numbers.
-FROM phusion/baseimage:0.9.11
+FROM phusion/baseimage:0.9.16
 
 # Set correct environment variables.
 ENV HOME /root
@@ -86,6 +86,8 @@ RUN rm -rf /opt/app/.git
 ADD sandstorm-headers /opt/sandstorm/latest/usr/include/sandstorm
 RUN cd /opt/app/sandstorm-smtp-bridge && make
 RUN cd /opt/app/sandstorm && make && cp bin/* /usr/bin
+RUN cd /opt/app && curl -sS https://getcomposer.org/installer | php
+RUN cd /opt/app && mv composer.json-dist composer.json && php composer.phar install --no-dev
 
 EXPOSE 33411
 
