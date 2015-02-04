@@ -113,5 +113,5 @@ function rcmail_sandstormblock($attrib)
     if (empty(trim($userAddress))) {
         $userAddress = $publicAddress;
     }
-    return html::p($attrib, "The address of this mailbox is: " . $publicAddress . "<br /><br />If you'd like to receive e-mail with this app, set up your regular e-mail address to forward to it. For example, <a target=\"_blank\" href=\"https://support.google.com/mail/answer/10957?hl=en\">here are instructions</a> for setting up forwarding in GMail.<br /><br />E-mail sent from this mailbox will appear to be from " . $userAddress . " by default.");
+    return html::p($attrib, "The address of this mailbox is: <b>" . $publicAddress . "</b><br /><br />If you'd like to receive e-mail with this app, set up your regular e-mail address to forward to it. For example, <a target=\"_blank\" href=\"https://support.google.com/mail/answer/10957?hl=en\">here are instructions</a> for setting up forwarding in GMail.<br /><br />E-mail sent from this mailbox will appear to be from <b>" . $userAddress . "</b> by default.");
 }
