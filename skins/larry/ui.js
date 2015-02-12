@@ -122,7 +122,8 @@ function rcube_mail_ui()
 
     /*** prepare minmode functions ***/
     $('#taskbar a').each(function(i,elem){
-      $(elem).append('<span class="tooltip">' + $('.button-inner', this).html() + '</span>')
+      if ($(elem).text() !== 'Connect to Your Address')
+        $(elem).append('<span class="tooltip">' + $('.button-inner', this).html() + '</span>')
     });
 
     $('#taskbar .minmodetoggle').click(function(e){
