@@ -16,23 +16,59 @@ const pkgdef :Spk.PackageDefinition = (
   manifest = (
     # This manifest is included in your app package to tell Sandstorm
     # about your app.
+    appTitle = (defaultText = "Roundcube"),
 
-    appVersion = 6,  # Increment this for every release.
+    appVersion = 7,  # Increment this for every release.
+
+    appMarketingVersion = (defaultText = "0.1.0"),
+
 
     actions = [
       # Define your "new document" handlers here.
       ( title = (defaultText = "New Roundcube Mailbox"),
+        nounPhrase = (defaultText = "mailbox"),
         command = .myCommand
         # The command to run when starting for the first time. (".myCommand"
         # is just a constant defined at the bottom of the file.)
       )
     ],
 
-    continueCommand = .myCommand
-    # This is the command called to start your app back up after it has been
-    # shut down for inactivity. Here we're using the same command as for
-    # starting a new instance, but you could use different commands for each
-    # case.
+    continueCommand = .myCommand,
+
+    metadata = (
+      icons = (
+        appGrid = (png = (
+          dpi1x = embed "app-graphics/roundcube-128.png",
+          dpi2x = embed "app-graphics/roundcube-256.png"
+        )),
+        grain = (png = (
+          dpi1x = embed "app-graphics/roundcube-24.png",
+          dpi2x = embed "app-graphics/roundcube-48.png"
+        )),
+        market = (png = (
+          dpi1x = embed "app-graphics/roundcube-150.png",
+          dpi2x = embed "app-graphics/roundcube-300.png"
+        )),
+      ),
+
+      website = "https://roundcube.net/",
+      codeUrl = "https://github.com/jparyani/roundcubemail",
+      license = (openSource = gpl3),
+      categories = [communications],
+
+      author = (
+        contactEmail = "jparyani@sandstorm.io",
+        pgpSignature = embed "pgp-signature",
+        upstreamAuthor = "Roundcube Team",
+      ),
+      pgpKeyring = embed "pgp-keyring",
+
+      description = (defaultText = embed "description.md"),
+
+      screenshots = [
+        (width = 449, height = 360, png = embed "sandstorm-screenshot.png")
+      ],
+    ),
   ),
 
   sourceMap = (
