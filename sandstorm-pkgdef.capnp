@@ -18,9 +18,9 @@ const pkgdef :Spk.PackageDefinition = (
     # about your app.
     appTitle = (defaultText = "Roundcube"),
 
-    appVersion = 7,  # Increment this for every release.
+    appVersion = 8,  # Increment this for every release.
 
-    appMarketingVersion = (defaultText = "1.1.0"),
+    appMarketingVersion = (defaultText = "1.1.2"),
 
 
     actions = [
@@ -64,6 +64,7 @@ const pkgdef :Spk.PackageDefinition = (
       pgpKeyring = embed "pgp-keyring",
 
       description = (defaultText = embed "description.md"),
+      shortDescription = (defaultText = "Email client"),
 
       changeLog = (defaultText = embed "CHANGELOG"),
 
