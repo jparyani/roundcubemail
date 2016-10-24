@@ -27,6 +27,11 @@ server {
     listen 8000 default_server;
     listen [::]:8000 default_server ipv6only=on;
 
+    # increase upload defaults
+    client_max_body_size 1000M;
+    client_header_timeout 30m;
+    client_body_timeout 30m;
+
     server_name localhost;
     root /opt/app;
     location / {
@@ -108,5 +113,11 @@ service imap-login {
 default_internal_user = user
 default_login_user = user
 EOF
-echo 'user:{plain}pass:1000:1000::/var::userdb_mail=maildir:/var/mail' > /etc/imap.passwd
-echo 'user:x:1000:1000:user:/var:/bin/bash' >> /etc/passwd
+
+cp /etc/passwd /opt/app/
+mv /etc/passwd /var
+ln -s /var/passwd /etc
+ln -s /var/imap.passwd /etc
+
+# echo 'user:{plain}pass:1000:1000::/var::userdb_mail=maildir:/var/mail' > /etc/imap.passwd
+# echo 'user:x:1000:1000:user:/var:/bin/bash' >> /etc/passwd
